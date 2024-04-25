@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./register.css"
+import { AuthContext } from "../../providers/AuthProvider";
+
+
 const Register = () => {
+    const { createUser,upadatedProfile } = useContext(AuthContext);
     const [user, setUser] = useState({
         username: "",
         email: "",
         password: ""
     })
-    console.log(user);
+    const handleResister = async (user) => {
+        
+        createUser(user?.email, user?.password)
+            .then((result) => {
+                if (result?.user) {
+                    upadatedProfile(user?.username)
+                        .then(() => { })
+                    toast.success('Login Successful')
+                    navigate("/")
+                }
+            })
+            .catch(err => toast.error(err.message))
+    }
     return (
         <div className="register-header">
             <h1>Register Now!</h1>
@@ -23,7 +39,7 @@ const Register = () => {
                     <label htmlFor="username">Password*</label> <br />
                     <input type="password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} placeholder="Enter your password..." />
                 </div>
-                <div className="btn-content btn">
+                <div onClick={handleResister} className="btn-content btn">
                     <button className="">Submit</button>
                 </div>
             </div>
