@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom"
+import Navber from "./components/Navber"
 
 
 function App() {
 
   return (
     <>
-     <h1 className='headLine'>User Registration Form!</h1>
-     <Outlet></Outlet>
+      <Navber />
+      <Outlet></Outlet>
     </>
   )
 }
