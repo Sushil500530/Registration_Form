@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
+import "./navber.css"
 
 const Navber = () => {
     return (
-        <div className="header">
+        <div className="nav-header">
             <div className="logo">
                 <h1 className="logo-text">Fav-Form</h1>
             </div>

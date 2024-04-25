@@ -1,0 +1,28 @@
+
+.nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+  }
+  
+  .logo {
+    margin: 0;
+  }
+  
+  .logo-text {
+    margin: 0;
+    color: white;
+  }
+  
+  .list-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .active {
+    padding: 4px 14px;
+    border-radius: 5px;
+    background: #056351;
+  }
