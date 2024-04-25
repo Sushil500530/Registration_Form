@@ -55,30 +55,21 @@
     display: block;
     position: absolute;
     top: 20px;
-    right: 0;
-    z-index: 1;
-  }
-  .menu-icon2 {
-   
-    top: 20px;
     right: 20px;
+    z-index: 1;
   }
 
   .animation {
     z-index: 0;
     position: fixed;
     padding-top: 2rem;
-    overflow-y: auto;
     width: 100%;
     height: 100vh;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
     top: 0;
     bottom: 0;
     left: 0;
     transform: none;
-    background-color: #4a4646;
-    color: #fff;
+    background-color: #3c3939;
     transition: all;
     transition-duration: 200ms;
     transition-timing-function: ease-in-out;
@@ -93,6 +84,8 @@
     transform: translate(-100%, 50%);
   }
 }
+
+
 
 
 

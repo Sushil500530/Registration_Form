@@ -5,8 +5,6 @@ import { IoMenuOutline } from "react-icons/io5";
 import { useState } from "react";
 const Navber = () => {
     const [isActive, setIsActive] = useState(false)
-
-    console.log(isActive);
     return (
         <div className="nav-header container">
             <div className="logo">
@@ -57,7 +55,7 @@ const Navber = () => {
                 }
                 <label onClick={() => setIsActive(!isActive)}>
                     {
-                        isActive === true ? <RxCross2 className="menu-icon2 menu-icon" /> : <IoMenuOutline className="menu-icon" />
+                        isActive === true ? <RxCross2 className="menu-icon" /> : <IoMenuOutline className="menu-icon" />
                     }
                 </label>
             </div>

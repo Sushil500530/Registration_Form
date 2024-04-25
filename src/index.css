@@ -53,3 +53,16 @@ a:active {
   padding: 0 10px;
   
 }
+.top{
+  margin-top: 4em;
+}
+
+.btn{
+  padding: 8px 60px;
+  background-color: #079e25;
+  color: white;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100%;
+}

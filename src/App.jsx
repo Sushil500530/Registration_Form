@@ -8,7 +8,7 @@ function App() {
     <div className="home">
       <div className="absolute"></div>
       <Navber />
-      <div className="container">
+      <div className="container top">
         <Outlet></Outlet>
       </div>
     </div>
