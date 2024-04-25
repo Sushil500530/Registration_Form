@@ -18,7 +18,13 @@
 .content{
     width: 100%;
 }
-
+button{
+    background:transparent;
+    border: none;
+    font-size: 18px;
+    color:white;
+    cursor: pointer;
+}
 .btn-content{
     width: 100%;
     display: flex;
@@ -35,6 +41,7 @@ input{
     border: 1px solid #ccc;
     outline: none;
     background-color: #302f2f;
+    color: white;
     font-size: 18px;
     border-radius: 5px;
     margin-top: 10px;
