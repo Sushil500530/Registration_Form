@@ -1,6 +1,7 @@
 # Favorite Form
-*Live Demo : (https://form-register.surge.sh)
+Live Demo : https://form-register.surge.sh
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
+This is the register form which allows any user to register.
+There are some input fields for registration, there is validation for the input fields. 
+If there is any error it is shown through toast.
+Can't login without proper email and password.
