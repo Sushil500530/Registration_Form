@@ -20,20 +20,20 @@ const Register = () => {
 
     })
 
-    const fname = user.firstname?.length;
-    const lname = user.lastname?.length;
-    const emai = user.email?.length;
-    const contactNumber = user.contact?.length;
-    const pass = user.password?.length;
-    const confirmpass = user.password?.length;
-    const username = user.firstname + " " + user.lastname;
+    const fname = user?.firstname?.length;
+    const lname = user?.lastname?.length;
+    const emai = user?.email?.length;
+    const contactNumber = user?.contact?.length;
+    const pass = user?.password?.length;
+    const confirmpass = user?.password?.length;
+    const username = user?.firstname + " " + user?.lastname;
 
     const handleResister = async () => {
         setIsLoading(true)
         const emailVerification = (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(user?.email))
         if (fname > 0 && lname > 0 && contactNumber > 0 && emai > 0 && pass > 0 && confirmpass > 0) {
             if (emailVerification === true) {
-                if (user.password === user.confirmpassword) {
+                if (user?.password === user?.confirmpassword) {
                     return await createUser(user?.email, user?.password)
                         .then((result) => {
                             if (result?.user) {
@@ -46,7 +46,7 @@ const Register = () => {
                                 console.log(user);
                                 toast.success('login successfully....!');
                                 setIsLoading(false)
-                                navigate("/")
+                                navigate("/login")
                             }
                         })
                         .catch(err => {
@@ -94,13 +94,13 @@ const Register = () => {
                 </div>
                 <div className="content">
                     <label htmlFor="confirmpassword">Confirm Password*</label> <br />
-                    <input type="password" value={user.confirmpassword} onChange={(e) => setUser({ ...user, confirmpassword: e.target.value })} placeholder="Enter your password..." />
+                    <input type="password" value={user.confirmpassword} onChange={(e) => setUser({ ...user, confirmpassword: e.target.value })} placeholder="Enter your confirm password..." />
                 </div>
                 <div className="btn-content">
                     <button onClick={handleResister} className="btn">
                         {
                             isLoading ?  (
-                                <span className='spinner-header flex items-center justify-center gap-3'> <FaSpinner className='m-auto animate' size={24} /> Processing....</span>
+                                <span className='spinner-header'> <FaSpinner className='m-auto animate' size={24} /> Processing....</span>
                             ) : (
                                 'Register'
                             )
