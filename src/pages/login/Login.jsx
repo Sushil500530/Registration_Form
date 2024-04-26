@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import SocialAccount from "../../components/shared/SocialAccount";
 
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const { loginUser, user } = useContext(AuthContext);
+    const { loginUser, user, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({
         username: "",
@@ -21,7 +22,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         setIsLoading(true);
-        if(user?.displayName !== currentUser.username){
+        if (user?.displayName !== currentUser.username) {
             setIsLoading(false)
             return toast.error("invalid username....!")
         }
@@ -52,9 +53,25 @@ const Login = () => {
             setIsLoading(false)
             return toast.error("Please fill in the all input field...!")
         }
-
-
     }
+
+    const handleGoogleSignIn = () => {
+        setIsLoading(true)
+        googleSignIn()
+            .then(res => {
+                console.log(res.user);
+                toast.success('Login Successfull...!')
+                setIsLoading(false)
+                return navigate("/");
+
+            })
+            .catch(error => {
+                setIsLoading(false)
+                toast.error(error.message)
+            })
+    }
+
+
     return (
         <div className="register-header">
             <h1>Register Now!</h1>
@@ -82,6 +99,9 @@ const Login = () => {
                         }
                     </button>
                 </div>
+                <p className="p">Don&apos;t have an account yet?{' '} Please <Link to='/register' className="link-account">Sign up</Link></p>
+                <div className="or-text">Or</div>
+                <SocialAccount handleGoogleSignIn={handleGoogleSignIn} name={'Sign in With Google'} />
             </div>
         </div>
     );

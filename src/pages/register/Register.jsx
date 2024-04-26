@@ -2,12 +2,13 @@ import { useContext, useState } from "react";
 import "./register.css"
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
+import SocialAccount from "../../components/shared/SocialAccount";
 
 
 const Register = () => {
-    const { createUser, upadatedProfile } = useContext(AuthContext);
+    const { createUser, upadatedProfile, googleSignIn } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const [user, setUser] = useState({
@@ -62,12 +63,26 @@ const Register = () => {
                 setIsLoading(false)
                 return toast.error("please enter your valid email.....!")
             }
-
         }
         setIsLoading(false)
         return toast.error("Please fill in the all input field...!")
     }
 
+    const handleGoogleSignIn = () => {
+        setIsLoading(true)
+        googleSignIn()
+            .then(res => {
+                console.log(res.user);
+                toast.success('Login Successfull...!')
+                setIsLoading(false)
+                return navigate("/");
+
+            })
+            .catch(error => {
+                setIsLoading(false)
+                toast.error(error.message)
+            })
+    }
     return (
         <div className="register-header">
             <h1>Register Now!</h1>
@@ -99,7 +114,7 @@ const Register = () => {
                 <div className="btn-content">
                     <button onClick={handleResister} className="btn">
                         {
-                            isLoading ?  (
+                            isLoading ? (
                                 <span className='spinner-header'> <FaSpinner className='m-auto animate' size={24} /> Processing....</span>
                             ) : (
                                 'Register'
@@ -107,6 +122,10 @@ const Register = () => {
                         }
                     </button>
                 </div>
+                <p className="p">Already have an account?{' '} Please <Link to='/login' className="link-account">Sign up</Link></p>
+
+                <div className="or-text">Or</div>
+                <SocialAccount handleGoogleSignIn={handleGoogleSignIn} name={'Sign in With Google'} />
             </div>
         </div>
     );

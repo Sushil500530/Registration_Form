@@ -1,0 +1,60 @@
+
+.social{
+    width: 100%; 
+}
+.social-acc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 9999px;
+    font-size: 1.875rem;
+    transition-timing-function: ease-in;
+    transition-property: all;
+    transition-duration: 0.3s;
+    gap: 1.25rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+.social-acc {
+    background-color: #F2F3F3;
+    color: black;
+    border-color: #3182CE;
+   
+}
+.social-acc:hover{
+    color:#3182CE ;
+}
+.social-text{
+    font-size: 18px;
+}
+
+@media only screen and (min-width: 375px) {
+    .social{
+        width: 100%;
+    }
+
+  }
+@media only screen and (min-width: 768px) {
+    .social{
+        width: 70%;
+    }
+
+  }
+@media only screen and (min-width: 1024px) {
+    .social{
+        width: 50%;
+    }
+
+  }
+@media only screen and (min-width: 1440px) {
+    .social{
+        width: 50%;
+    }
+
+  }

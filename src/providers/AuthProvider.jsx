@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect } from "react";
 import { useState } from "react";
 import auth from "./firebase/firebase.config";
-import { GoogleAuthProvider } from "firebase/auth/cordova";
 
 
 const googleProvider = new GoogleAuthProvider()

@@ -75,3 +75,14 @@ a:active {
 .animate {
   animation: spin 1s linear infinite;
 }
+.p{
+  font-size: 18px;
+}
+.link-account{
+  color: #7798fb;
+  font-size: 20px;
+}
+
+.link-account:hover{
+  text-decoration: underline;
+}

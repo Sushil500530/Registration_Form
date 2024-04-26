@@ -59,6 +59,15 @@ input:focus{
     gap: 12px;
  }
 
+ .or-text{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+ }
+
+
 @media only screen and (min-width: 375px) {
     .register-content{
         width: 100%;
