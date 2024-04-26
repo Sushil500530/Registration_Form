@@ -2,9 +2,19 @@ import { NavLink } from "react-router-dom";
 import "./navber.css"
 import { RxCross2 } from "react-icons/rx";
 import { IoMenuOutline } from "react-icons/io5";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from './../providers/AuthProvider';
+import toast from "react-hot-toast";
 const Navber = () => {
-    const [isActive, setIsActive] = useState(false)
+    const { user, logoutUser } = useContext(AuthContext);
+    const [isActive, setIsActive] = useState(false);
+    // console.log(user);
+    const handleLogout = () => {
+        logoutUser()
+            .then(() => {
+                toast.success("logout successfully...!")
+            })
+    }
     return (
         <div className="nav-header container">
             <div className="logo">
@@ -21,14 +31,32 @@ const Navber = () => {
                             isActive ? "active" : ""}>
                             Service
                         </NavLink>
-                        <NavLink to="/login" className={({ isActive }) =>
-                            isActive ? "active" : ""}>
-                            Login
-                        </NavLink>
-                        <NavLink to="/register" className={({ isActive }) =>
-                            isActive ? "active" : ""}>
-                            Register
-                        </NavLink>
+
+                        {
+                            user?.email ? <>
+                                <h1 className="profile-name">{user?.displayName}</h1>
+                                <div className="user-profile-header">
+                                    <div className="profile-image">
+                                        <img src={user?.photoURL} alt="user-img" />
+                                    </div>
+                                    <div className="profile-content">
+                                        <button className="profile-item">Profile</button>
+                                        <button onClick={handleLogout} className="profile-item logout-btn">Logout</button>
+                                    </div>
+                                </div>
+
+                            </> : <>
+                                <NavLink to="/login" className={({ isActive }) =>
+                                    isActive ? "active" : ""}>
+                                    Login
+                                </NavLink>
+                                <NavLink to="/register" className={({ isActive }) =>
+                                    isActive ? "active" : ""}>
+                                    Register
+                                </NavLink>
+                            </>
+                        }
+
                     </ul>
                 </div>
                 {
@@ -42,14 +70,30 @@ const Navber = () => {
                                 isActive ? "active" : ""}>
                                 Service
                             </NavLink>
-                            <NavLink to="/login" className={({ isActive }) =>
-                                isActive ? "active" : ""}>
-                                Login
-                            </NavLink>
-                            <NavLink to="/register" className={({ isActive }) =>
-                                isActive ? "active" : ""}>
-                                Register
-                            </NavLink>
+                            {
+                                user?.email ? <>
+                                    <h1 className="profile-name">{user?.displayName}</h1>
+                                    <div className="user-profile-header">
+                                        <div className="profile-image">
+                                            <img src={user?.photoURL} alt="user-img" />
+                                        </div>
+                                        <div className="profile-content">
+                                            <button className="profile-item">Profile</button>
+                                            <button onClick={handleLogout} className="profile-item logout-btn">Logout</button>
+                                        </div>
+                                    </div>
+
+                                </> : <>
+                                    <NavLink to="/login" className={({ isActive }) =>
+                                        isActive ? "active" : ""}>
+                                        Login
+                                    </NavLink>
+                                    <NavLink to="/register" className={({ isActive }) =>
+                                        isActive ? "active" : ""}>
+                                        Register
+                                    </NavLink>
+                                </>
+                            }
                         </ul>
                     </div>
                 }

@@ -18,16 +18,17 @@ const Login = () => {
     const fullname = currentUser?.username?.length;
     const emailLength = currentUser?.email?.length;
     const pass = currentUser?.password?.length;
-    // console.log(user.email);
+    console.log(user?.email);
 
     const handleLogin = async () => {
+        console.log(user);
         setIsLoading(true);
-        if (user?.displayName !== currentUser.username) {
-            setIsLoading(false)
-            return toast.error("invalid username....!")
-        }
+        // if (user?.displayName !== currentUser.username) {
+        //     setIsLoading(false)
+        //     return toast.error("invalid username....!")
+        // }
         if (fullname > 0 && emailLength > 0 && pass > 0) {
-            if (user?.email === currentUser?.email) {
+            if (user?.email || currentUser?.email) {
                 return await loginUser(currentUser?.email, currentUser?.password)
                     .then(res => {
                         if (res.user) {
